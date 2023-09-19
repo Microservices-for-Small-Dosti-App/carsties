@@ -26,4 +26,8 @@ dotnet tool update dotnet-ef --prerelease -g
 dotnet ef migrations add "InitialCreate" -o Data/Migrations
 
 dotnet ef migrations add "InitialCreate" -o Data/Migrations --project .\src\AuctionService\AuctionService.csproj
+
+docker compose up -d
+
+dotnet ef database update
 ```

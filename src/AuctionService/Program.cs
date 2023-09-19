@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<AuctionDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("AuctionDb"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 
