@@ -8,7 +8,7 @@ public class Auction
 
     public required string? Seller { get; set; }
 
-    public required string? Winner { get; set; }
+    public string? Winner { get; set; }
 
     public int? SoldAmount { get; set; }
 
