@@ -1,6 +1,8 @@
 using AuctionService.Data;
+using AuctionService.DTOs;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuctionService.Controllers;
 
@@ -11,5 +13,31 @@ public class AuctionsController(AuctionDbContext context, IMapper mapper) : Cont
 
     private readonly IMapper _mapper = mapper;
     private readonly AuctionDbContext _context = context;
+
+    [HttpGet]
+    public async Task<ActionResult<List<AuctionDto>>> GetAllAuctions()
+    {
+        var auctions = await _context.Auctions
+                                    .Include(x => x.Item)
+                                    .OrderBy(x => x.Item!.Make)
+                                    .ToListAsync();
+
+        return _mapper.Map<List<AuctionDto>>(auctions);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<AuctionDto>> GetAuctionById(Guid id)
+    {
+        var auction = await _context.Auctions
+                                    .Include(x => x.Item)
+                                    .FirstOrDefaultAsync(x => x.Id == id);
+
+        if (auction is null)
+        {
+            return NotFound();
+        }
+
+        return _mapper.Map<AuctionDto>(auction);
+    }
 
 }
