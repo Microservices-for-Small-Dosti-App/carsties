@@ -12,7 +12,6 @@ builder.Services.AddDbContext<AuctionDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -29,5 +28,14 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+try
+{
+    DbInitializer.Initialize(app);
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
 
 app.Run();
