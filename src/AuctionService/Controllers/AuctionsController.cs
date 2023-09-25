@@ -45,6 +45,7 @@ public class AuctionsController(AuctionDbContext context, IMapper mapper) : Cont
     public async Task<ActionResult<AuctionDto>> CreateAuction(CreateAuctionDto createAuctionDto)
     {
         var auction = _mapper.Map<Auction>(createAuctionDto);
+
         // TODO: Add current user as seller
         auction.Seller = "No Name";
 
@@ -62,14 +63,22 @@ public class AuctionsController(AuctionDbContext context, IMapper mapper) : Cont
     [HttpPut("{id}")]
     public async Task<ActionResult<AuctionDto>> UpdateAuction(Guid id, UpdateAuctionDto updateAuctionDto)
     {
-        var auction = await _context.Auctions.FirstOrDefaultAsync(x => x.Id == id);
+        var auction = await _context.Auctions.Include(x => x.Item)
+                                            .FirstOrDefaultAsync(x => x.Id == id);
 
         if (auction is null)
         {
             return NotFound();
         }
 
-        _mapper.Map(updateAuctionDto, auction);
+        // TODO: Check if current user is seller
+
+        auction.Item!.Make = updateAuctionDto.Make ?? auction.Item!.Make;
+        auction.Item!.Model = updateAuctionDto.Model ?? auction.Item!.Model;
+        auction.Item!.Color = updateAuctionDto.Color ?? auction.Item!.Color;
+        auction.Item!.Mileage = updateAuctionDto.Mileage ?? auction.Item!.Mileage;
+        auction.Item!.Year = updateAuctionDto.Year ?? auction.Item!.Year;
+
         _context.Auctions.Update(auction);
         var results = await _context.SaveChangesAsync() > 0;
 
@@ -78,7 +87,7 @@ public class AuctionsController(AuctionDbContext context, IMapper mapper) : Cont
             return BadRequest("Could not update auction.");
         }
 
-        return _mapper.Map<AuctionDto>(auction);
+        return Ok(_mapper.Map<AuctionDto>(auction));
     }
 
 }
