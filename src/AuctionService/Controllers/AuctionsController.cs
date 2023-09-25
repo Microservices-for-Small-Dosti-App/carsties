@@ -59,4 +59,26 @@ public class AuctionsController(AuctionDbContext context, IMapper mapper) : Cont
         return CreatedAtAction(nameof(GetAuctionById), new { id = auction.Id }, _mapper.Map<AuctionDto>(auction));
     }
 
+    [HttpPut("{id}")]
+    public async Task<ActionResult<AuctionDto>> UpdateAuction(Guid id, UpdateAuctionDto updateAuctionDto)
+    {
+        var auction = await _context.Auctions.FirstOrDefaultAsync(x => x.Id == id);
+
+        if (auction is null)
+        {
+            return NotFound();
+        }
+
+        _mapper.Map(updateAuctionDto, auction);
+        _context.Auctions.Update(auction);
+        var results = await _context.SaveChangesAsync() > 0;
+
+        if (!results)
+        {
+            return BadRequest("Could not update auction.");
+        }
+
+        return _mapper.Map<AuctionDto>(auction);
+    }
+
 }
