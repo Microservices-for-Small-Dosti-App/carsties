@@ -6,12 +6,14 @@ Microservices using .NET 8, Next.js, Docker, Kubernetes.
 
 > 1. Inside `C:\Carsties`
 
+## Auction Service
+
 ```bash
 dotnet new list
 
 dotnet new sln
 
-dotnet new webapi -o src/AuctionService --no-https --use-controllers --use-endpoints
+dotnet new webapi -o src/AuctionService --no-https --use-controllers --use-endpoints --dry-run
 
 dotnet sln add src/AuctionService
 
@@ -30,4 +32,12 @@ dotnet ef migrations add "InitialCreate" -o Data/Migrations --project .\src\Auct
 docker compose up -d
 
 dotnet ef database update
+```
+
+## Search Service
+
+```bash
+dotnet new webapi -o src/SearchService --no-https --use-controllers --use-endpoints --dry-run
+
+dotnet sln add src/SearchService
 ```
