@@ -40,4 +40,6 @@ dotnet ef database update
 dotnet new webapi -o src/SearchService --no-https --use-controllers --use-endpoints --dry-run
 
 dotnet sln add src/SearchService
+
+docker-compose up -d
 ```
