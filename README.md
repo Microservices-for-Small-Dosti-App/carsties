@@ -13,7 +13,7 @@ dotnet new list
 
 dotnet new sln
 
-dotnet new webapi -o src/AuctionService --no-https --use-controllers --use-endpoints
+dotnet new webapi -o src/AuctionService --no-https --use-controllers --use-endpoints --dry-run
 
 dotnet sln add src/AuctionService
 
@@ -37,7 +37,7 @@ dotnet ef database update
 ## Search Service
 
 ```bash
-dotnet new webapi -o src/SearchService 
+dotnet new webapi -o src/SearchService --no-https --use-controllers --use-endpoints --dry-run
 
 dotnet sln add src/SearchService
 ```
