@@ -32,7 +32,7 @@ public class DbInitializer
 
     private static async Task<List<Item>> GetInitialItems()
     {
-        var itemData = await File.ReadAllTextAsync("Data/ItemData.json");
+        var itemData = await File.ReadAllTextAsync("Data/auctions.json");
 
         var options = new JsonSerializerOptions
         {

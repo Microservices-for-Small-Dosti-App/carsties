@@ -6,6 +6,10 @@ Microservices using .NET 8, Next.js, Docker, Kubernetes.
 
 > 1. Inside `C:\Carsties`
 
+```bash
+dotnet watch
+```
+
 ## Auction Service
 
 ```bash
