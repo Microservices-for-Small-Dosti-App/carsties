@@ -59,8 +59,6 @@ public class SearchController : ControllerBase
         // {
         //     query.Match(x => x.Winner == searchParams.Winner);
         // }
-
-
     }
 
 }
