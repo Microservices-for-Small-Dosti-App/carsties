@@ -18,7 +18,7 @@
       "launchUrl": "swagger"
     },
     "SearchService": {
-      "applicationUrl": "http://localhost:5244",
+      "applicationUrl": "http://localhost:7002",
       "commandName": "Project",
       "dotnetRunMessages": true,
       "environmentVariables": {
