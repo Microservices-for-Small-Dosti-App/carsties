@@ -1,7 +1,6 @@
 using MongoDB.Driver;
 using MongoDB.Entities;
 using SearchService.Models;
-using System.Text.Json;
 
 namespace SearchService.Data;
 
