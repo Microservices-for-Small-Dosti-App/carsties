@@ -31,7 +31,6 @@ public class DbInitializer
         {
             await DB.InsertAsync(items);
         }
-
     }
 
 }
