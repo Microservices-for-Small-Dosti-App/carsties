@@ -34,15 +34,4 @@ public class DbInitializer
 
     }
 
-    // private static async Task<List<Item>> GetInitialItems()
-    // {
-    //     var itemData = await File.ReadAllTextAsync("Data/auctions.json");
-
-    //     var options = new JsonSerializerOptions
-    //     {
-    //         PropertyNameCaseInsensitive = true
-    //     };
-
-    //     return JsonSerializer.Deserialize<List<Item>>(itemData, options)!;
-    // }
 }
