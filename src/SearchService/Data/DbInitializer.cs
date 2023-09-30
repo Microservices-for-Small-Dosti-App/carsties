@@ -20,25 +20,30 @@ public class DbInitializer
 
         var count = await DB.CountAsync<Item>();
 
+        using var scope = app.Services.CreateScope();
+
+        var httpClient = scope.ServiceProvider.GetRequiredService<AuctionSvcHttpClient>();
+
+        var items = await httpClient.GetItemsForSearchDb();
+
+        Console.WriteLine($"Found {items.Count} items to add to the database.");
+
         if (count == 0)
         {
-            Console.WriteLine("No data available. Seeding data...");
-
-            var items = await GetInitialItems();
-
-            await DB.SaveAsync(items);
+            await DB.InsertAsync(items);
         }
+
     }
 
-    private static async Task<List<Item>> GetInitialItems()
-    {
-        var itemData = await File.ReadAllTextAsync("Data/auctions.json");
+    // private static async Task<List<Item>> GetInitialItems()
+    // {
+    //     var itemData = await File.ReadAllTextAsync("Data/auctions.json");
 
-        var options = new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        };
+    //     var options = new JsonSerializerOptions
+    //     {
+    //         PropertyNameCaseInsensitive = true
+    //     };
 
-        return JsonSerializer.Deserialize<List<Item>>(itemData, options)!;
-    }
+    //     return JsonSerializer.Deserialize<List<Item>>(itemData, options)!;
+    // }
 }
