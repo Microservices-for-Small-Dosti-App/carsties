@@ -25,9 +25,9 @@ public class DbInitializer
 
         var items = await httpClient.GetItemsForSearchDb();
 
-        Console.WriteLine($"Found {items.Count} items to add to the database.");
+        Console.WriteLine($"Found {items?.Count} items to add to the database.");
 
-        if (count == 0)
+        if (items?.Count > 0)
         {
             await DB.InsertAsync(items);
         }
