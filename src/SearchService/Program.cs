@@ -28,14 +28,18 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-try
+app.Lifetime.ApplicationStarted.Register(async () =>
 {
-    await DbInitializer.Initialize(app);
-}
-catch (System.Exception e)
-{
-    Console.WriteLine(e);
-}
+    try
+    {
+        await DbInitializer.Initialize(app);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e);
+    }
+});
+
 
 app.Run();
 
