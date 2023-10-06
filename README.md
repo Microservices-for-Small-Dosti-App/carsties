@@ -47,3 +47,9 @@ dotnet sln add src/SearchService
 
 docker-compose up -d
 ```
+
+## Contracts
+
+```bash
+dotnet new classlib -o src/Contracts --force
+```
