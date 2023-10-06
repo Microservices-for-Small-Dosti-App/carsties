@@ -55,3 +55,10 @@ dotnet new classlib -o src/Contracts --dry-run
 
 dotnet sln add src/Contracts
 ```
+
+
+## Few Commands
+
+```bash
+dotnet add reference ../Contracts/Contracts.csproj
+```
