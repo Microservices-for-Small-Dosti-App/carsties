@@ -6,14 +6,9 @@ using SearchService.Models;
 
 namespace SearchService;
 
-public class AuctionCreatedConsumer : IConsumer<AuctionCreated>
+public class AuctionCreatedConsumer(IMapper mapper) : IConsumer<AuctionCreated>
 {
-    private readonly IMapper _mapper;
-
-    public AuctionCreatedConsumer(IMapper mapper)
-    {
-        _mapper = mapper;
-    }
+    private readonly IMapper _mapper = mapper;
 
     public async Task Consume(ConsumeContext<AuctionCreated> context)
     {
