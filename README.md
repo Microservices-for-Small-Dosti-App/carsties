@@ -51,5 +51,7 @@ docker-compose up -d
 ## Contracts
 
 ```bash
-dotnet new classlib -o src/Contracts --force
+dotnet new classlib -o src/Contracts --dry-run
+
+dotnet sln add src/Contracts
 ```
