@@ -1,7 +1,7 @@
 using MongoDB.Entities;
 using SearchService.Models;
 
-namespace SearchService;
+namespace SearchService.Services;
 
 public class AuctionSvcHttpClient(HttpClient httpClient, IConfiguration config)
 {
