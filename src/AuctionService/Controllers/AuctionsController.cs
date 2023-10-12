@@ -58,11 +58,12 @@ public class AuctionsController(AuctionDbContext context, IMapper mapper, IPubli
         auction.Seller = "No Name";
 
         _context.Auctions.Add(auction);
-        var results = await _context.SaveChangesAsync() > 0;
 
         var newAuctionDto = _mapper.Map<AuctionDto>(auction);
 
         await _publishEndpoint.Publish(_mapper.Map<AuctionCreated>(newAuctionDto));
+
+        var results = await _context.SaveChangesAsync() > 0;
 
         if (!results)
         {
