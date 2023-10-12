@@ -36,6 +36,10 @@ dotnet ef migrations add "InitialCreate" -o Data/Migrations --project .\src\Auct
 docker compose up -d
 
 dotnet ef database update
+
+dotnet ef migrations add "OutBoxV1" -o Data/Migrations --project .\src\AuctionService\AuctionService.csproj
+
+dotnet ef database update
 ```
 
 ## Search Service
