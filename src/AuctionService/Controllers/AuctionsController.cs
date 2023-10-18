@@ -116,8 +116,9 @@ public class AuctionsController(AuctionDbContext context, IMapper mapper, IPubli
         }
 
         // TODO: Check if current user is seller
-
         _context.Auctions.Remove(auction);
+
+        await _publishEndpoint.Publish<AuctionDeleted>(new { Id = auction.Id.ToString() });
 
         var results = await _context.SaveChangesAsync() > 0;
 
