@@ -85,7 +85,6 @@ public class AuctionsController(AuctionDbContext context, IMapper mapper, IPubli
         }
 
         // TODO: Check if current user is seller
-
         auction.Item!.Make = updateAuctionDto.Make ?? auction.Item!.Make;
         auction.Item!.Model = updateAuctionDto.Model ?? auction.Item!.Model;
         auction.Item!.Color = updateAuctionDto.Color ?? auction.Item!.Color;
@@ -93,6 +92,9 @@ public class AuctionsController(AuctionDbContext context, IMapper mapper, IPubli
         auction.Item!.Year = updateAuctionDto.Year ?? auction.Item!.Year;
 
         _context.Auctions.Update(auction);
+
+        await _publishEndpoint.Publish(_mapper.Map<AuctionUpdated>(auction));
+
         var results = await _context.SaveChangesAsync() > 0;
 
         if (!results)
@@ -114,8 +116,9 @@ public class AuctionsController(AuctionDbContext context, IMapper mapper, IPubli
         }
 
         // TODO: Check if current user is seller
-
         _context.Auctions.Remove(auction);
+
+        await _publishEndpoint.Publish<AuctionDeleted>(new { Id = auction.Id.ToString() });
 
         var results = await _context.SaveChangesAsync() > 0;
 
