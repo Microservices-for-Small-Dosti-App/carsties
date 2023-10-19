@@ -14,6 +14,8 @@ dotnet watch
 
 ```bash
 dotnet new --install Duende.IdentityServer.Templates
+
+dotnet new isaspid -n IdentityService -o src/IdentityService
 ```
 
 ## Auction Service
