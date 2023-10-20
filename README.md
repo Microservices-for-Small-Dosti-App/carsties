@@ -10,6 +10,16 @@ Microservices using .NET 8, Next.js, Docker, Kubernetes.
 dotnet watch
 ```
 
+## Identity Service
+
+```bash
+dotnet new --install Duende.IdentityServer.Templates
+
+dotnet new isaspid -n IdentityService -o src/IdentityService
+
+dotnet sln add .\src\IdentityService\
+```
+
 ## Auction Service
 
 ```bash
@@ -59,7 +69,6 @@ dotnet new classlib -o src/Contracts --dry-run
 
 dotnet sln add src/Contracts
 ```
-
 
 ## Few Commands
 
