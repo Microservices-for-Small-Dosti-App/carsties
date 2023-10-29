@@ -23,10 +23,10 @@ public class SeedData
             alice = new ApplicationUser
             {
                 UserName = "alice",
-                Email = "AliceSmith@email.com",
+                Email = "AliceSmith@example.com",
                 EmailConfirmed = true,
             };
-            var result = userMgr.CreateAsync(alice, "Pass123$").Result;
+            var result = userMgr.CreateAsync(alice, "Sample@123$").Result;
             if (!result.Succeeded)
             {
                 throw new Exception(result.Errors.First().Description);
@@ -55,10 +55,10 @@ public class SeedData
             bob = new ApplicationUser
             {
                 UserName = "bob",
-                Email = "BobSmith@email.com",
+                Email = "BobSmith@example.com",
                 EmailConfirmed = true
             };
-            var result = userMgr.CreateAsync(bob, "Pass123$").Result;
+            var result = userMgr.CreateAsync(bob, "Sample@123$").Result;
             if (!result.Succeeded)
             {
                 throw new Exception(result.Errors.First().Description);
