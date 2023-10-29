@@ -18,6 +18,8 @@ dotnet new --install Duende.IdentityServer.Templates
 dotnet new isaspid -n IdentityService -o src/IdentityService
 
 dotnet sln add .\src\IdentityService\
+
+C:\GitHub\carsties\src\IdentityService> dotnet ef migrations add "InitialCreate" -o Data/Migrations
 ```
 
 ## Auction Service
