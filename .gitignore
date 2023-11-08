@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+src/IdentityService/keys/is-signing-key-46602D7673BB96BD345F4E93F34D06C1.json
