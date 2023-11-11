@@ -10,17 +10,12 @@ namespace IdentityService.Pages.Register
 {
     [SecurityHeaders]
     [AllowAnonymous]
-    public class Index : PageModel
+    public class Index(UserManager<ApplicationUser> userManager) : PageModel
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-
-        public Index(UserManager<ApplicationUser> userManager)
-        {
-            _userManager = userManager;
-        }
+        private readonly UserManager<ApplicationUser> _userManager = userManager;
 
         [BindProperty]
-        public RegisterViewModel Input { get; set; }
+        public RegisterViewModel? Input { get; set; }
 
         [BindProperty]
         public bool RegisterSuccess { get; set; }
@@ -29,10 +24,6 @@ namespace IdentityService.Pages.Register
         {
             Input = new RegisterViewModel
             {
-                Email = string.Empty,
-                Password = string.Empty,
-                Username = string.Empty,
-                FullName = string.Empty,
                 ReturnUrl = returnUrl,
             };
 
@@ -41,24 +32,27 @@ namespace IdentityService.Pages.Register
 
         public async Task<IActionResult> OnPost()
         {
-            if (Input.Button != "register") return Redirect("~/");
+            if (Input?.Button != "register")
+            {
+                return Redirect("~/");
+            }
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser
+                ApplicationUser user = new()
                 {
                     UserName = Input.Username,
                     Email = Input.Email,
                     EmailConfirmed = true
                 };
 
-                var result = await _userManager.CreateAsync(user, Input.Password);
+                IdentityResult result = await _userManager.CreateAsync(user, Input.Password!);
 
                 if (result.Succeeded)
                 {
                     _ = await _userManager.AddClaimsAsync(user, new Claim[]
                     {
-                        new(JwtClaimTypes.Name, Input.FullName)
+                        new(JwtClaimTypes.Name, Input.FullName!)
                     });
 
                     RegisterSuccess = true;
