@@ -26,7 +26,7 @@ public static class Config
                 ClientName = "Postman",
                 AllowedScopes = { "openid", "profile", "auctionApp" },
                 RedirectUris = { "https://localhost:44300/signin-oidc" },
-                ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
+                ClientSecrets = { new Secret("NotASecret".Sha256()) },
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
             },
         };
