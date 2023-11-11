@@ -10,17 +10,12 @@ namespace IdentityService.Pages.Register
 {
     [SecurityHeaders]
     [AllowAnonymous]
-    public class Index : PageModel
+    public class Index(UserManager<ApplicationUser> userManager) : PageModel
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-
-        public Index(UserManager<ApplicationUser> userManager)
-        {
-            _userManager = userManager;
-        }
+        private readonly UserManager<ApplicationUser> _userManager = userManager;
 
         [BindProperty]
-        public RegisterViewModel Input { get; set; }
+        public RegisterViewModel? Input { get; set; }
 
         [BindProperty]
         public bool RegisterSuccess { get; set; }
