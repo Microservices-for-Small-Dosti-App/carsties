@@ -24,10 +24,6 @@ namespace IdentityService.Pages.Register
         {
             Input = new RegisterViewModel
             {
-                Email = string.Empty,
-                Password = string.Empty,
-                Username = string.Empty,
-                FullName = string.Empty,
                 ReturnUrl = returnUrl,
             };
 
@@ -36,7 +32,10 @@ namespace IdentityService.Pages.Register
 
         public async Task<IActionResult> OnPost()
         {
-            if (Input.Button != "register") return Redirect("~/");
+            if (Input?.Button != "register")
+            {
+                return Redirect("~/");
+            }
 
             if (ModelState.IsValid)
             {
