@@ -39,20 +39,20 @@ namespace IdentityService.Pages.Register
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser
+                ApplicationUser user = new()
                 {
                     UserName = Input.Username,
                     Email = Input.Email,
                     EmailConfirmed = true
                 };
 
-                var result = await _userManager.CreateAsync(user, Input.Password);
+                IdentityResult result = await _userManager.CreateAsync(user, Input.Password!);
 
                 if (result.Succeeded)
                 {
                     _ = await _userManager.AddClaimsAsync(user, new Claim[]
                     {
-                        new(JwtClaimTypes.Name, Input.FullName)
+                        new(JwtClaimTypes.Name, Input.FullName!)
                     });
 
                     RegisterSuccess = true;
