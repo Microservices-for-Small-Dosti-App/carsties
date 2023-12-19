@@ -10,6 +10,13 @@ Microservices using .NET 8, Next.js, Docker, Kubernetes.
 dotnet watch
 ```
 
+## Gateway
+
+```bash
+dotnet new web -o src/GatewayService --dry-run
+```
+
+
 ## Identity Service
 
 ```bash
