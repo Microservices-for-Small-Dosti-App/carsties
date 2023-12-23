@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 src/IdentityService/keys/is-signing-key-46602D7673BB96BD345F4E93F34D06C1.json
 src/IdentityService/keys/is-signing-key-0B7A9B32788357E16C9BB831EA7DB2B9.json
+src/IdentityService/keys/is-signing-key-A3C137F30679714BD71048F4111401B1.json
