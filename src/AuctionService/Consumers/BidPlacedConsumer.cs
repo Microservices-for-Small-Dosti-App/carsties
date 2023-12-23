@@ -4,14 +4,9 @@ using MassTransit;
 
 namespace AuctionService.Consumers;
 
-public class BidPlacedConsumer : IConsumer<BidPlaced>
+public class BidPlacedConsumer(AuctionDbContext dbContext) : IConsumer<BidPlaced>
 {
-    private readonly AuctionDbContext _dbContext;
-
-    public BidPlacedConsumer(AuctionDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
+    private readonly AuctionDbContext _dbContext = dbContext;
 
     public async Task Consume(ConsumeContext<BidPlaced> context)
     {

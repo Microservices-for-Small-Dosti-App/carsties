@@ -5,14 +5,9 @@ using MassTransit;
 
 namespace AuctionService.Consumers;
 
-public class AuctionFinishedConsumer : IConsumer<AuctionFinished>
+public class AuctionFinishedConsumer(AuctionDbContext dbContext) : IConsumer<AuctionFinished>
 {
-    private readonly AuctionDbContext _dbContext;
-
-    public AuctionFinishedConsumer(AuctionDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
+    private readonly AuctionDbContext _dbContext = dbContext;
 
     public async Task Consume(ConsumeContext<AuctionFinished> context)
     {
