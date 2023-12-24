@@ -8,9 +8,16 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+
+# copy all .csproj files and restore as distinct layers.   Use of the same COPY command
+# for every dockerfile in the project to take advantage of docker caching
 COPY ["src/AuctionService/AuctionService.csproj", "src/AuctionService/"]
 COPY ["src/Contracts/Contracts.csproj", "src/Contracts/"]
+
+# Restore package deps
 RUN dotnet restore "./src/AuctionService/AuctionService.csproj"
+
+# Copy the app folders over
 COPY . .
 WORKDIR "/src/src/AuctionService"
 RUN dotnet build "./AuctionService.csproj" -c $BUILD_CONFIGURATION -o /app/build
