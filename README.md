@@ -10,12 +10,24 @@ Microservices using .NET 8, Next.js, Docker, Kubernetes.
 dotnet watch
 ```
 
+## Docker Compose
+
+```bash
+docker compose build auction-svc
+docker compose up -d
+docker compose down
+
+docker compose build search-svc
+docker compose up -d
+docker compose down
+
+```
+
 ## Gateway
 
 ```bash
 dotnet new web -o src/GatewayService --dry-run
 ```
-
 
 ## Identity Service
 
@@ -81,7 +93,7 @@ dotnet new classlib -o src/Contracts --dry-run
 dotnet sln add src/Contracts
 ```
 
-## Few Commands
+## Few Commands V1
 
 ```bash
 dotnet add reference ../Contracts/Contracts.csproj
