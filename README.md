@@ -14,6 +14,7 @@ dotnet watch
 
 ```bash
 docker compose build auction-svc
+docker compose up -d
 ```
 
 ## Gateway
