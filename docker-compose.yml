@@ -75,6 +75,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
+    ports:
+      - 6001:80
 
 volumes:
   pgdata:
