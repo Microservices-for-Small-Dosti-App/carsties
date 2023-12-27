@@ -77,13 +77,13 @@
             }
         },
         {
-            "name": "IdentityService - Docker Launch",
+            "name": "Docker Launch",
             "type": "docker",
             "request": "attach",
             "platform": "netCore",
             "sourceFileMap": {
-                "/app": "${workspaceFolder}"
-            }
+                "/app": "${workspaceFolder}",
+            },
         },
         {
             // Use IntelliSense to find out which attributes exist for C# debugging
