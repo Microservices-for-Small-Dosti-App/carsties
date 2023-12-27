@@ -12,7 +12,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.RequireHttpsMetadata = false;
         options.TokenValidationParameters.ValidateAudience = false;
         options.TokenValidationParameters.NameClaimType = "username";
-        options.TokenValidationParameters.ValidIssuers = ["http://localhost:5000"];
+        // options.TokenValidationParameters.ValidIssuers = ["http://localhost:5000"];
     });
 
 builder.Services.AddCors(options =>
