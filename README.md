@@ -21,6 +21,13 @@ docker compose build search-svc
 docker compose up -d
 docker compose down
 
+docker compose build identity-svc
+docker compose up -d
+docker compose down
+
+docker compose build gateway-svc
+docker compose up -d
+docker compose down
 ```
 
 ## Gateway
