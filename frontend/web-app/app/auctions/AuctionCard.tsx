@@ -1,7 +1,11 @@
 import React from 'react'
 
-export default function AuctionCard() {
-  return (
-    <div>AuctionCard</div>
-  )
+type AuctionCardProps = {
+    auction: any
+};
+
+export default function AuctionCard({ auction }: AuctionCardProps) {
+    return (
+        <div>{auction.make}</div>
+    )
 }
