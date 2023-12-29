@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react'
 
 type AuctionCardProps = {
@@ -6,6 +7,12 @@ type AuctionCardProps = {
 
 export default function AuctionCard({ auction }: AuctionCardProps) {
     return (
-        <div>{auction.make}</div>
+        <a href='#'>
+            <div className='w-full bg-gray-200 aspect-video rounded-lg overflow-hidden'>
+                <Image 
+                    src={auction.imageUrl}
+                />
+            </div>
+        </a>
     )
 }
