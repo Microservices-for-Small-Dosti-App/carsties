@@ -10,6 +10,14 @@ Microservices using .NET 8, Next.js, Docker, Kubernetes.
 dotnet watch
 ```
 
+## Next JS Client Application
+
+```powershell
+npx create-next-app@latest
+
+npm install react-icons
+```
+
 ## Docker Compose
 
 ```bash
