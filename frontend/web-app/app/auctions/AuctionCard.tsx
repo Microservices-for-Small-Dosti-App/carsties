@@ -13,6 +13,10 @@ export default function AuctionCard({ auction }: AuctionCardProps) {
                 <div>
                     <Image src={auction.imageUrl} alt='Auction Image' fill className='object-cover' priority
                         sizes='(max-width:768px) 100vw, (max-width:1200px) 50vw, 25vw' />
+
+                    <div className='absolute bottom-2 left-2'>
+                        <CountdownTimer auctionEnd={auction.auctionEnd} />
+                    </div>
                 </div>
             </div>
 
@@ -20,8 +24,6 @@ export default function AuctionCard({ auction }: AuctionCardProps) {
                 <h3 className='text-gray-700'>{auction.make} {auction.model}</h3>
                 <p className='font-semibold text-sm'>{auction.year}</p>
             </div>
-
-            <CountdownTimer auctionEnd={auction.auctionEnd} />
         </a>
     )
 }
