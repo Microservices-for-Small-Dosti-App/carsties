@@ -3,6 +3,10 @@
 import React from 'react'
 import Countdown, { zeroPad } from 'react-countdown';
 
+type Props = {
+    auctionEnd: string;
+};
+
 // Renderer callback with condition
 const renderer = ({ days, hours, minutes, seconds, completed }:
     { days: number, hours: number, minutes: number, seconds: number, completed: boolean }) => {
@@ -27,9 +31,10 @@ const renderer = ({ days, hours, minutes, seconds, completed }:
     )
 };
 
-export default function CountdownTimer() {
+export default function CountdownTimer({ auctionEnd }: Props) {
     return (
-        <div>CountdownTimer</div>
-    );
-
+        <div>
+            <Countdown date={auctionEnd} renderer={renderer} />
+        </div>
+    )
 }
