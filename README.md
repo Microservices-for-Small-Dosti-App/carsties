@@ -16,6 +16,8 @@ dotnet watch
 npx create-next-app@latest
 
 npm install react-icons
+
+npm i -D @tailwindcss/aspect-ratio
 ```
 
 ## Docker Compose
