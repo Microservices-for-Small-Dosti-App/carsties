@@ -1,8 +1,9 @@
 import CountdownTimer from './CountdownTimer';
 import CarImage from './CarImage';
+import { Auction } from '@/types';
 
 type AuctionCardProps = {
-    auction: any
+    auction: Auction
 };
 
 export default function AuctionCard({ auction }: AuctionCardProps) {
