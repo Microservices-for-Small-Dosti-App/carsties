@@ -20,6 +20,8 @@ npm install react-icons
 npm i -D @tailwindcss/aspect-ratio
 
 npm i react-countdown
+
+npm i zustand query-string
 ```
 
 ## Docker Compose
