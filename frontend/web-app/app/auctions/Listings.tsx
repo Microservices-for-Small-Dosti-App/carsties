@@ -23,34 +23,37 @@ export default function Listings() {
         seller: state.seller,
         winner: state.winner
     }), shallow);
-    
+
     const setParams = useParamsStore(state => state.setParams);
-    
+
     const url = qs.stringifyUrl({ url: '', query: params });
+
+    function setPageNumber(pageNumber: number) {
+        setParams({ pageNumber })
+    }
 
     useEffect(() => {
         getData(url)
             .then((data: any) => {
-                setAuctions(data.results);
-                setPageCount(data.pageCount);
+                setData(data);
             })
-    }, [pageNumber, pageSize]);
+    }, [url]);
 
-    if (auctions.length === 0) {
+    if (!data) {
         return <div>Loading...</div>
     }
 
     return (
         <>
-            <Filters pageSize={pageSize} setPageSize={setPageSize} />
+            <Filters />
 
             <div className='grid grid-cols-4 gap-6'>
-                {auctions.map((auction: Auction) => (
+                {data.results.map((auction: Auction) => (
                     <AuctionCard key={auction.id} auction={auction} />
                 ))}
             </div>
             <div className='flex justify-center mt-4'>
-                <AppPagination currentPage={pageNumber} pageCount={pageCount} pageChanged={setPageNumber} />
+                <AppPagination pageChanged={setPageNumber} currentPage={params.pageNumber} pageCount={data.pageCount} />
             </div>
         </>
     );
