@@ -16,5 +16,5 @@ export default function Heading({ title, subtitle, center }: Props) {
                 {subtitle}
             </div>
         </div>
-    )
-}
+    );
+};
