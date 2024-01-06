@@ -46,9 +46,28 @@ const filterButtons = [
 export default function Filters() {
     const pageSize = useParamsStore(state => state.pageSize);
     const setParams = useParamsStore(state => state.setParams);
+    const orderBy = useParamsStore(state => state.orderBy);
+    const filterBy = useParamsStore(state => state.filterBy);
 
     return (
         <div className='flex justify-between items-center mb-4'>
+
+            <div>
+                <span className='uppercase text-sm text-gray-500 mr-2'>Order by</span>
+                <Button.Group>
+                    {orderButtons.map(({ label, icon: Icon, value }) => (
+                        <Button
+                            key={value}
+                            onClick={() => setParams({ orderBy: value })}
+                            color={`${orderBy === value ? 'blue' : 'gray'}`}
+                        >
+                            <Icon className='mr-3 h-4 w-4' />
+                            {label}
+                        </Button>
+                    ))}
+                </Button.Group>
+            </div>
+
             <div>
                 <span className='uppercase text-sm text-gray-500 mr-2'>Page Size</span>
                 <Button.Group>
