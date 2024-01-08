@@ -31,35 +31,35 @@ export default function UserActions({ user }: Props) {
 
 
     return (
-        <Button outline>
-            <Link href='/session'>
-                Session
-            </Link>
-        </Button>
-        // <Dropdown
-        //     inline
-        //     label={`Welcome ${user.name}`}
-        // >
-        //     <Dropdown.Item icon={HiUser} onClick={setSeller}>
-        //         My Auctions
-        //     </Dropdown.Item>
-        //     <Dropdown.Item icon={AiFillTrophy} onClick={setWinner}>
-        //         Auctions won
-        //     </Dropdown.Item>
-        //     <Dropdown.Item icon={AiFillCar}>
-        //         <Link href='/auctions/create'>
-        //             Sell my car
-        //         </Link>
-        //     </Dropdown.Item>
-        //     <Dropdown.Item icon={HiCog}>
-        //         <Link href='/session'>
-        //             Session (dev only)
-        //         </Link>
-        //     </Dropdown.Item>
-        //     <Dropdown.Divider />
-        //     <Dropdown.Item icon={AiOutlineLogout} onClick={() => signOut({ callbackUrl: '/' })}>
-        //         Sign out
-        //     </Dropdown.Item>
-        // </Dropdown>
+        // <Button outline>
+        //     <Link href='/session'>
+        //         Session
+        //     </Link>
+        // </Button>
+        <Dropdown
+            inline
+            label={`Welcome ${user?.name}`}
+        >
+            <Dropdown.Item icon={HiUser} onClick={setSeller}>
+                My Auctions
+            </Dropdown.Item>
+            <Dropdown.Item icon={AiFillTrophy} onClick={setWinner}>
+                Auctions won
+            </Dropdown.Item>
+            <Dropdown.Item icon={AiFillCar}>
+                <Link href='/auctions/create'>
+                    Sell my car
+                </Link>
+            </Dropdown.Item>
+            <Dropdown.Item icon={HiCog}>
+                <Link href='/session'>
+                    Session (dev only)
+                </Link>
+            </Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item icon={AiOutlineLogout} onClick={() => signOut({ callbackUrl: '/' })}>
+                Sign out
+            </Dropdown.Item>
+        </Dropdown>
     )
 }
