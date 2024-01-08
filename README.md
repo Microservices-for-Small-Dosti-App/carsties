@@ -22,6 +22,7 @@ npm i -D @tailwindcss/aspect-ratio
 npm i react-countdown
 
 npm i zustand query-string
+npm i next-auth
 ```
 
 ## Docker Compose
