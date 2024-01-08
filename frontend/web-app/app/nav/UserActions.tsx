@@ -29,14 +29,8 @@ export default function UserActions({ user }: Props) {
         if (pathname !== '/') router.push('/');
     }
 
-
     return (
-        // <Button outline>
-        //     <Link href='/session'>
-        //         Session
-        //     </Link>
-        // </Button>
-        <Dropdown inline label={`Welcome ${user?.name}`} className='text-blue-600 font-semibold' >
+        <Dropdown inline label={`Welcome ${user?.name}`} className='font-semibold'>
             <Dropdown.Item icon={HiUser} onClick={setSeller}>
                 My Auctions
             </Dropdown.Item>
