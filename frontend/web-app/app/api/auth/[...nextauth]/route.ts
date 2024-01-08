@@ -9,8 +9,8 @@ export const authOptions: NextAuthOptions = {
         DuendeIdentityServer6({
             id: 'id-server',
             clientId: 'nextApp',
-            clientSecret: process.env.CLIENT_SECRET!,
-            issuer: process.env.ID_URL,
+            clientSecret: 'secret',
+            issuer: 'http://localhost:5000',
             authorization: { params: { scope: 'openid profile auctionApp' } },
             idToken: true
         })
