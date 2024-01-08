@@ -36,10 +36,7 @@ export default function UserActions({ user }: Props) {
         //         Session
         //     </Link>
         // </Button>
-        <Dropdown
-            inline
-            label={`Welcome ${user?.name}`}
-        >
+        <Dropdown inline label={`Welcome ${user?.name}`} className='text-blue-600 font-semibold' >
             <Dropdown.Item icon={HiUser} onClick={setSeller}>
                 My Auctions
             </Dropdown.Item>
