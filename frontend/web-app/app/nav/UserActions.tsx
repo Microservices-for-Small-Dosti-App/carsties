@@ -11,7 +11,7 @@ import { AiFillCar, AiFillTrophy, AiOutlineLogout } from 'react-icons/ai'
 import { HiCog, HiUser } from 'react-icons/hi2';
 
 type Props = {
-    user?: User
+    user?: Partial<User>;
 }
 
 export default function UserActions({ user }: Props) {
@@ -52,5 +52,6 @@ export default function UserActions({ user }: Props) {
                 Sign out
             </Dropdown.Item>
         </Dropdown>
-    )
-}
+    );
+
+};
