@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 export default function Details({ params }: { params: { id: string } }) {
     return (
-        <div>Details</div>
-    )
-}
+        <div>Details for {params.id}</div>
+    );
+
+};
