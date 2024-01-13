@@ -61,6 +61,15 @@ export default function AuctionForm() {
           rules={{ required: 'Make is required' }} />
         <Input label='Model' name='model' control={control}
           rules={{ required: 'Model is required' }} />
+        <Input label='Color' name='color' control={control}
+          rules={{ required: 'Color is required' }} />
+
+        <div className='grid grid-cols-2 gap-3'>
+          <Input label='Year' name='year' control={control} type='number'
+            rules={{ required: 'Year is required' }} />
+          <Input label='Mileage' name='mileage' control={control} type='number'
+            rules={{ required: 'Model is required' }} />
+        </div>
 
         <div className='flex justify-between'>
           <Button outline color='gray'>Cancel</Button>
