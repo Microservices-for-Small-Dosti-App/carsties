@@ -23,6 +23,7 @@ npm i react-countdown
 
 npm i zustand query-string
 npm i next-auth
+npm i react-hook-form react-datepicker
 ```
 
 ## Docker Compose
