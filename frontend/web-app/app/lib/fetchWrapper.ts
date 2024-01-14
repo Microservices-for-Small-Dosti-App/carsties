@@ -42,7 +42,9 @@ async function del(url: string) {
         method: 'DELETE',
         headers: await getHeaders()
     }
-    const response = await fetch(baseUrl + url, requestOptions);
+
+    const response = await fetch(`${baseUrl}${url}`, requestOptions);
+
     return await handleResponse(response);
 }
 
@@ -80,9 +82,4 @@ async function handleResponse(response: Response) {
     }
 }
 
-export const fetchWrapper = {
-    get,
-    post,
-    put,
-    del
-}
+export const fetchWrapper = { get, post, put, del };
