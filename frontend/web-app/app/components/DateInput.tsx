@@ -1,6 +1,7 @@
-import React from 'react'
-import { UseControllerProps, useController } from 'react-hook-form'
+import React from 'react';
 import DatePicker, { ReactDatePickerProps } from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { UseControllerProps, useController } from 'react-hook-form';
 
 type Props = {
     label: string

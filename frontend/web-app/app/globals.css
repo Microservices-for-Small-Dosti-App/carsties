@@ -5,3 +5,7 @@
 button {
     align-items: center;
 }
+
+.react-datepicker-wrapper {
+    width: 100%;
+}

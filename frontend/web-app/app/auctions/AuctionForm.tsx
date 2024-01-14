@@ -23,13 +23,13 @@ export default function AuctionForm() {
       mode: 'onTouched'
     });
 
-  // useEffect(() => {
-  //   if (auction) {
-  //     const { make, model, color, mileage, year } = auction;
-  //     reset({ make, model, color, mileage, year });
-  //   }
-  //   setFocus('make');
-  // }, [setFocus, reset, auction])
+  useEffect(() => {
+    // if (auction) {
+    //   const { make, model, color, mileage, year } = auction;
+    //   reset({ make, model, color, mileage, year });
+    // }
+    setFocus('make');
+  }, [setFocus])
 
   async function onSubmit(data: FieldValues) {
     console.log(data);

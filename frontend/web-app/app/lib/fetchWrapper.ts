@@ -8,7 +8,8 @@ async function get(url: string) {
         header: await getHeaders()
     }
 
-    const response = await fetch(baseUrl + url, requestOptions);
+    const response = await fetch(`${baseUrl}${url}`, requestOptions);
+
     return await handleResponse(response);
 }
 
@@ -18,7 +19,9 @@ async function post(url: string, body: {}) {
         headers: await getHeaders(),
         body: JSON.stringify(body)
     }
-    const response = await fetch(baseUrl + url, requestOptions);
+
+    const response = await fetch(`${baseUrl}${url}`, requestOptions);
+
     return await handleResponse(response);
 }
 
@@ -28,7 +31,9 @@ async function put(url: string, body: {}) {
         headers: await getHeaders(),
         body: JSON.stringify(body)
     }
-    const response = await fetch(baseUrl + url, requestOptions);
+
+    const response = await fetch(`${baseUrl}${url}`, requestOptions);
+
     return await handleResponse(response);
 }
 
@@ -37,17 +42,22 @@ async function del(url: string) {
         method: 'DELETE',
         headers: await getHeaders()
     }
-    const response = await fetch(baseUrl + url, requestOptions);
+
+    const response = await fetch(`${baseUrl}${url}`, requestOptions);
+
     return await handleResponse(response);
 }
 
 async function getHeaders() {
     const token = await getTokenWorkaround();
+
     const headers = { 'Content-type': 'application/json' } as any;
+
     if (token) {
         // headers.Authorization = 'Bearer ' + token.access_token
         headers.Authorization = `Bearer ${token?.access_token}`
     }
+
     return headers;
 }
 
@@ -72,9 +82,4 @@ async function handleResponse(response: Response) {
     }
 }
 
-export const fetchWrapper = {
-    get,
-    post,
-    put,
-    del
-}
+export const fetchWrapper = { get, post, put, del };
