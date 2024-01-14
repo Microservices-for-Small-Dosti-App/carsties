@@ -20,7 +20,7 @@ async function post(url: string, body: {}) {
         body: JSON.stringify(body)
     }
 
-    const response = await fetch(baseUrl + url, requestOptions);
+    const response = await fetch(`${baseUrl}${url}`, requestOptions);
 
     return await handleResponse(response);
 }
@@ -31,7 +31,9 @@ async function put(url: string, body: {}) {
         headers: await getHeaders(),
         body: JSON.stringify(body)
     }
-    const response = await fetch(baseUrl + url, requestOptions);
+
+    const response = await fetch(`${baseUrl}${url}`, requestOptions);
+
     return await handleResponse(response);
 }
 
