@@ -9,7 +9,7 @@ async function get(url: string) {
     }
 
     const response = await fetch(`${baseUrl}${url}`, requestOptions);
-    
+
     return await handleResponse(response);
 }
 
@@ -19,7 +19,9 @@ async function post(url: string, body: {}) {
         headers: await getHeaders(),
         body: JSON.stringify(body)
     }
+
     const response = await fetch(baseUrl + url, requestOptions);
+
     return await handleResponse(response);
 }
 
@@ -44,11 +46,14 @@ async function del(url: string) {
 
 async function getHeaders() {
     const token = await getTokenWorkaround();
+
     const headers = { 'Content-type': 'application/json' } as any;
+
     if (token) {
         // headers.Authorization = 'Bearer ' + token.access_token
         headers.Authorization = `Bearer ${token?.access_token}`
     }
+
     return headers;
 }
 
