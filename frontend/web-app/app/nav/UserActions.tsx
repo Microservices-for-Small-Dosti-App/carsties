@@ -11,7 +11,7 @@ import { AiFillCar, AiFillTrophy, AiOutlineLogout } from 'react-icons/ai'
 import { HiCog, HiUser } from 'react-icons/hi2';
 
 type Props = {
-    user?: Partial<User>;
+    user: User;
 }
 
 export default function UserActions({ user }: Props) {
@@ -20,12 +20,12 @@ export default function UserActions({ user }: Props) {
     const setParams = useParamsStore(state => state.setParams);
 
     function setWinner() {
-        // setParams({ winner: user.username, seller: undefined })
+        setParams({ winner: user.username, seller: undefined })
         if (pathname !== '/') router.push('/');
     }
 
     function setSeller() {
-        // setParams({ seller: user.username, winner: undefined })
+        setParams({ seller: user.username, winner: undefined })
         if (pathname !== '/') router.push('/');
     }
 
