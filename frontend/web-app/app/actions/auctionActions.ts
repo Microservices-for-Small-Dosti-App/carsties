@@ -5,7 +5,7 @@ import { getTokenWorkaround } from "./authActions";
 import { fetchWrapper } from "../lib/fetchWrapper";
 
 export async function getData(query: string): Promise<PagedResult<Auction>> {
-    console.log('getData', query);
+    console.log('getData(). Query:', query);
 
     return fetchWrapper.get(`search${query}`);
     // const response = await fetch(`http://localhost:6001/search${query}`);
