@@ -9,6 +9,7 @@ import { Button, TextInput } from 'flowbite-react';
 import { register } from 'module';
 import Input from '../components/Input';
 import DateInput from '../components/DateInput';
+import { createAuction } from '../actions/auctionActions';
 
 type Props = {
   auction?: Auction
@@ -18,8 +19,8 @@ export default function AuctionForm() {
 
   const router = useRouter();
   const pathname = usePathname();
-  const { control, handleSubmit, setFocus, reset,
-    formState: { isSubmitting, isValid, isDirty, errors } } = useForm({
+  const { control, handleSubmit, setFocus,
+    formState: { isSubmitting, isValid } } = useForm({
       mode: 'onTouched'
     });
 
@@ -34,25 +35,33 @@ export default function AuctionForm() {
   async function onSubmit(data: FieldValues) {
     console.log(data);
 
-    // try {
-    //   let id = '';
-    //   let res;
-    //   if (pathname === '/auctions/create') {
-    //     res = await createAuction(data);
-    //     id = res.id;
-    //   } else {
-    //     if (auction) {
-    //       res = await updateAuction(data, auction.id);
-    //       id = auction.id;
-    //     }
-    //   }
-    //   if (res.error) {
-    //     throw res.error;
-    //   }
-    //   router.push(`/auctions/details/${id}`)
-    // } catch (error: any) {
-    //   toast.error(error.status + ' ' + error.message)
-    // }
+    try {
+      const res = await createAuction(data);
+      if (res.error) {
+        throw new Error(res.error);
+      }
+
+      router.push(`/auctions/details/${res.id}`)
+
+      // let id = '';
+      // let res;
+      // if (pathname === '/auctions/create') {
+      //   res = await createAuction(data);
+      //   id = res.id;
+      // } else {
+      //   if (auction) {
+      //     res = await updateAuction(data, auction.id);
+      //     id = auction.id;
+      //   }
+      // }
+      // if (res.error) {
+      //   throw res.error;
+      // }
+      // router.push(`/auctions/details/${id}`)
+    } catch (error: any) {
+      console.log(error);
+      // toast.error(error.status + ' ' + error.message)
+    }
   }
 
   return (
