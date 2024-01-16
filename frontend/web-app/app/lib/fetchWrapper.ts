@@ -3,47 +3,34 @@ import { getTokenWorkaround } from "@/app/actions/authActions";
 const baseUrl = process.env.API_URL;
 
 async function get(url: string) {
-    const requestOptions = {
-        method: 'GET',
-        header: await getHeaders()
-    }
+    // const requestOptions = await getRequestOptions('GET');
 
-    const response = await fetch(`${baseUrl}${url}`, requestOptions);
+    const response = await getFetchResponse(url, 'GET');
 
     return await handleResponse(response);
 }
 
-async function post(url: string, body: {}) {
-    const requestOptions = {
-        method: 'POST',
-        headers: await getHeaders(),
-        body: JSON.stringify(body)
-    }
 
-    const response = await fetch(`${baseUrl}${url}`, requestOptions);
+async function post(url: string, body: {}) {
+    const requestOptions = await getRequestOptions('POST', body);
+
+    const response = await getFetchResponse(url, requestOptions);
 
     return await handleResponse(response);
 }
 
 async function put(url: string, body: {}) {
-    const requestOptions = {
-        method: 'PUT',
-        headers: await getHeaders(),
-        body: JSON.stringify(body)
-    }
+    const requestOptions = await getRequestOptions('PUT', body);
 
-    const response = await fetch(`${baseUrl}${url}`, requestOptions);
+    const response = await getFetchResponse(url, requestOptions);
 
     return await handleResponse(response);
 }
 
 async function del(url: string) {
-    const requestOptions = {
-        method: 'DELETE',
-        headers: await getHeaders()
-    }
+    const requestOptions = await getRequestOptions('DELETE');
 
-    const response = await fetch(`${baseUrl}${url}`, requestOptions);
+    const response = await getFetchResponse(url, requestOptions);
 
     return await handleResponse(response);
 }
@@ -53,11 +40,24 @@ async function getHeaders() {
 
     const headers = { 'Content-type': 'application/json' } as any;
 
-    if (token) {
-        headers.Authorization = `Bearer ${token?.access_token}`
-    }
+    if (token) { headers.Authorization = `Bearer ${token?.access_token}` }
 
     return headers;
+}
+
+async function getRequestOptions(method: string, body?: {}) {
+    const requestOptions = { method: method, headers: await getHeaders(), } as any;
+
+    if (typeof body !== 'undefined') { requestOptions.body = JSON.stringify(body); }
+
+    return requestOptions;
+}
+
+async function getFetchResponse(url: string, method: string, body?: {}) {
+    const requestOptions = await getRequestOptions(method, body);
+    // console.log('getFetchResponse(). requestOptions:', requestOptions, 'url:', url, 'method:', method, 'body:', body);
+
+    return await fetch(`${baseUrl}${url}`, requestOptions);
 }
 
 async function handleResponse(response: Response) {
