@@ -69,7 +69,7 @@ async function handleResponse(response: Response) {
             status: response.status,
             message: typeof data === 'string' && data.length > 0 ? data : response.statusText
         }
-        
+
         return { error };
     }
 }
