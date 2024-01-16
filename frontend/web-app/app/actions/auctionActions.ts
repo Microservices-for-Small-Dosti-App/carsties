@@ -8,11 +8,6 @@ export async function getData(query: string): Promise<PagedResult<Auction>> {
     console.log('getData(). Query:', query);
 
     return fetchWrapper.get(`search${query}`);
-    // const response = await fetch(`http://localhost:6001/search${query}`);
-
-    // if (!response.ok) throw new Error('Failed to fetch data');
-
-    // return response.json();
 }
 
 export async function updateAuctionTest() {
@@ -35,3 +30,9 @@ export async function updateAuctionTest() {
 
     return response.statusText;
 }
+
+// const response = await fetch(`http://localhost:6001/search${query}`);
+
+// if (!response.ok) throw new Error('Failed to fetch data');
+
+// return response.json();
