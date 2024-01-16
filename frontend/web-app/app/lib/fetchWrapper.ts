@@ -3,8 +3,6 @@ import { getTokenWorkaround } from "@/app/actions/authActions";
 const baseUrl = process.env.API_URL;
 
 async function get(url: string) {
-    // const requestOptions = await getRequestOptions('GET');
-
     const response = await getFetchResponse(url, 'GET');
 
     return await handleResponse(response);
@@ -12,25 +10,19 @@ async function get(url: string) {
 
 
 async function post(url: string, body: {}) {
-    const requestOptions = await getRequestOptions('POST', body);
-
-    const response = await getFetchResponse(url, requestOptions);
+    const response = await getFetchResponse(url, 'POST', body);
 
     return await handleResponse(response);
 }
 
 async function put(url: string, body: {}) {
-    const requestOptions = await getRequestOptions('PUT', body);
-
-    const response = await getFetchResponse(url, requestOptions);
+    const response = await getFetchResponse(url, 'PUT', body);
 
     return await handleResponse(response);
 }
 
 async function del(url: string) {
-    const requestOptions = await getRequestOptions('DELETE');
-
-    const response = await getFetchResponse(url, requestOptions);
+    const response = await getFetchResponse(url, 'DELETE');
 
     return await handleResponse(response);
 }
@@ -77,6 +69,7 @@ async function handleResponse(response: Response) {
             status: response.status,
             message: typeof data === 'string' && data.length > 0 ? data : response.statusText
         }
+        
         return { error };
     }
 }
