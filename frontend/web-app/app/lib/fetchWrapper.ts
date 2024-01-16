@@ -54,8 +54,8 @@ async function getFetchResponse(url: string, method: string, body?: {}) {
 
 async function handleResponse(response: Response) {
     const text = await response.text();
-
     let data;
+    
     try {
         data = JSON.parse(text);
     } catch (error) {

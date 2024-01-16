@@ -1,8 +1,8 @@
 'use server'
 
 import { Auction, PagedResult } from "@/types";
-// import { getTokenWorkaround } from "./authActions";
 import { fetchWrapper } from "../lib/fetchWrapper";
+import { FieldValues } from "react-hook-form";
 
 export async function getData(query: string): Promise<PagedResult<Auction>> {
     console.log('getData(). Query:', query);
@@ -16,6 +16,10 @@ export async function updateAuctionTest() {
     };
 
     return fetchWrapper.put(`auctions/afbee524-5972-4075-8800-7d1f9d7b0a0c`, data);
+}
+
+export async function createAuction(data: FieldValues) {
+    return await fetchWrapper.post('auctions', data);
 }
 
 // const response = await fetch(`http://localhost:6001/search${query}`);
