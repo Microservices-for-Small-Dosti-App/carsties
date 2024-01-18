@@ -20,18 +20,18 @@ export default function AuctionForm({ auction }: Props) {
 
   const router = useRouter();
   const pathname = usePathname();
-  const { control, handleSubmit, setFocus,
+  const { control, handleSubmit, setFocus, reset,
     formState: { isSubmitting, isValid } } = useForm({
       mode: 'onTouched'
     });
 
   useEffect(() => {
-    // if (auction) {
-    //   const { make, model, color, mileage, year } = auction;
-    //   reset({ make, model, color, mileage, year });
-    // }
+    if (auction) {
+      const { make, model, color, mileage, year } = auction;
+      reset({ make, model, color, mileage, year });
+    }
     setFocus('make');
-  }, [setFocus])
+  }, [setFocus, reset, auction])
 
   async function onSubmit(data: FieldValues) {
     console.log(data);
