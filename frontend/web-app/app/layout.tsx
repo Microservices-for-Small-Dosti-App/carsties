@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Navbar from './nav/Navbar';
+import { Toast } from 'flowbite-react';
+import ToasterProvider from './providers/ToasterProvider';
 
 
 export const metadata: Metadata = {
@@ -12,6 +14,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
+        <ToasterProvider />
         <Navbar />
         <main className="container mx-auto px-5 pt-10">
           {children}

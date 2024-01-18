@@ -25,6 +25,8 @@ npm i zustand query-string
 npm i next-auth
 npm i react-hook-form react-datepicker
 npm i -D @types/react-datepicker
+
+npm i react-hot-toast
 ```
 
 ## Docker Compose
