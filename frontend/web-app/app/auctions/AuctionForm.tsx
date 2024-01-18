@@ -9,7 +9,7 @@ import { Button, TextInput } from 'flowbite-react';
 import { register } from 'module';
 import Input from '../components/Input';
 import DateInput from '../components/DateInput';
-import { createAuction } from '../actions/auctionActions';
+import { createAuction, updateAuction } from '../actions/auctionActions';
 import toast from 'react-hot-toast';
 
 type Props = {
@@ -34,33 +34,23 @@ export default function AuctionForm({ auction }: Props) {
   }, [setFocus, reset, auction])
 
   async function onSubmit(data: FieldValues) {
-    console.log(data);
-
     try {
-      const res = await createAuction(data);
+      let id = '';
+      let res;
+      if (pathname === '/auctions/create') {
+        res = await createAuction(data);
+        id = res.id;
+      } else {
+        if (auction) {
+          res = await updateAuction(data, auction.id);
+          id = auction.id;
+        }
+      }
       if (res.error) {
         throw res.error;
       }
-
-      router.push(`/auctions/details/${res.id}`)
-
-      // let id = '';
-      // let res;
-      // if (pathname === '/auctions/create') {
-      //   res = await createAuction(data);
-      //   id = res.id;
-      // } else {
-      //   if (auction) {
-      //     res = await updateAuction(data, auction.id);
-      //     id = auction.id;
-      //   }
-      // }
-      // if (res.error) {
-      //   throw res.error;
-      // }
-      // router.push(`/auctions/details/${id}`)
+      router.push(`/auctions/details/${id}`)
     } catch (error: any) {
-      console.log(error);
       toast.error(error.status + ' ' + error.message)
     }
   }
