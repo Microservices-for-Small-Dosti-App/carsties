@@ -4,6 +4,7 @@ import Heading from '@/app/components/Heading';
 import React from 'react';
 import CountdownTimer from '../../CountdownTimer';
 import CarImage from '../../CarImage';
+import DetailedSpecs from './DetailedSpecs';
 
 export default async function Details({ params }: { params: { id: string } }) {
     const data = await getDetailedViewData(params.id);
@@ -40,7 +41,7 @@ export default async function Details({ params }: { params: { id: string } }) {
             </div>
 
             <div className='mt-3 grid grid-cols-1 rounded-lg'>
-                {/* <DetailedSpecs auction={data} /> */}
+                <DetailedSpecs auction={data} />
             </div>
 
         </div>
