@@ -10,6 +10,7 @@ import { register } from 'module';
 import Input from '../components/Input';
 import DateInput from '../components/DateInput';
 import { createAuction } from '../actions/auctionActions';
+import toast from 'react-hot-toast';
 
 type Props = {
   auction?: Auction
@@ -60,7 +61,7 @@ export default function AuctionForm() {
       // router.push(`/auctions/details/${id}`)
     } catch (error: any) {
       console.log(error);
-      // toast.error(error.status + ' ' + error.message)
+      toast.error(error.status + ' ' + error.message)
     }
   }
 
