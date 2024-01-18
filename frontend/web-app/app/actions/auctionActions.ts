@@ -22,15 +22,14 @@ export async function createAuction(data: FieldValues) {
     return await fetchWrapper.post('auctions', data);
 }
 
+
+
 // const response = await fetch(`http://localhost:6001/search${query}`);
-
 // if (!response.ok) throw new Error('Failed to fetch data');
-
 // return response.json();
 
 
 // const token = await getTokenWorkaround();
-
 // const response = await fetch(`http://localhost:6001/auctions/afbee524-5972-4075-8800-7d1f9d7b0a0c`, {
 //     method: 'PUT',
 //     headers: {
@@ -39,7 +38,5 @@ export async function createAuction(data: FieldValues) {
 //     },
 //     body: JSON.stringify(data)
 // });
-
 // if (!response.ok) return { status: response.status, message: response.statusText };
-
 // return response.statusText;
