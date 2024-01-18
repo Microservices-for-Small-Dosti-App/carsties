@@ -35,6 +35,7 @@ export default async function Details({ params }: { params: { id: string } }) {
                     <CarImage imageUrl={data.imageUrl} />
                 </div>
 
+                <Heading title='Bids' />
                 {/* <BidList user={user} auction={data} /> */}
             </div>
 
