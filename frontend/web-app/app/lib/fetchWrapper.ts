@@ -32,7 +32,7 @@ async function getHeaders() {
 
     const headers = { 'Content-type': 'application/json' } as any;
 
-    // if (token) { headers.Authorization = `Bearer ${token?.access_token}` }
+    if (token) { headers.Authorization = `Bearer ${token?.access_token}` }
 
     return headers;
 }
