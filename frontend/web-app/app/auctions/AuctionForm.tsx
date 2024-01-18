@@ -16,7 +16,7 @@ type Props = {
   auction?: Auction
 }
 
-export default function AuctionForm() {
+export default function AuctionForm({ auction }: Props) {
 
   const router = useRouter();
   const pathname = usePathname();
