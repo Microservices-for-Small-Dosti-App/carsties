@@ -5,6 +5,7 @@ import React from 'react';
 import CountdownTimer from '../../CountdownTimer';
 import CarImage from '../../CarImage';
 import DetailedSpecs from './DetailedSpecs';
+import EditButton from './EditButton';
 
 export default async function Details({ params }: { params: { id: string } }) {
     const data = await getDetailedViewData(params.id);
@@ -18,8 +19,8 @@ export default async function Details({ params }: { params: { id: string } }) {
                     <Heading title={`${data.make} ${data.model}`} />
                     {user?.username === data.seller && (
                         <>
-                            {/* <EditButton id={data.id} />
-                            <DeleteButton id={data.id} /> */}
+                            <EditButton id={data.id} />
+                            {/* <DeleteButton id={data.id} /> */}
                         </>
 
                     )}
