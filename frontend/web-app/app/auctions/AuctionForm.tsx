@@ -1,16 +1,14 @@
 'use client';
 
-import React, { useEffect } from 'react'
-import { usePathname, useRouter } from 'next/navigation';
-import { FieldValues, useForm } from 'react-hook-form';
-// import { toast } from 'react-hot-toast';
 import { Auction } from '@/types';
-import { Button, TextInput } from 'flowbite-react';
-import { register } from 'module';
-import Input from '../components/Input';
-import DateInput from '../components/DateInput';
-import { createAuction, updateAuction } from '../actions/auctionActions';
+import { Button } from 'flowbite-react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { FieldValues, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { createAuction, updateAuction } from '../actions/auctionActions';
+import DateInput from '../components/DateInput';
+import Input from '../components/Input';
 
 type Props = {
   auction?: Auction
