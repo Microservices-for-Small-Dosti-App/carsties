@@ -1,4 +1,4 @@
-import NextAuth, { NextAuthOptions } from "next-auth"
+import NextAuth, { NextAuthOptions } from "next-auth";
 import DuendeIdentityServer6 from 'next-auth/providers/duende-identity-server6';
 
 export const authOptions: NextAuthOptions = {
@@ -36,4 +36,4 @@ export const authOptions: NextAuthOptions = {
 }
 
 const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST }
+export { handler as GET, handler as POST };
