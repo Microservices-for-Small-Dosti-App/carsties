@@ -1,9 +1,9 @@
 import { getDetailedViewData } from '@/app/actions/auctionActions';
 import { getCurrentUser } from '@/app/actions/authActions';
 import Heading from '@/app/components/Heading';
-import React from 'react';
-import CountdownTimer from '../../CountdownTimer';
 import CarImage from '../../CarImage';
+import CountdownTimer from '../../CountdownTimer';
+import DeleteButton from './DeleteButton';
 import DetailedSpecs from './DetailedSpecs';
 import EditButton from './EditButton';
 
@@ -20,7 +20,7 @@ export default async function Details({ params }: { params: { id: string } }) {
                     {user?.username === data.seller && (
                         <>
                             <EditButton id={data.id} />
-                            {/* <DeleteButton id={data.id} /> */}
+                            <DeleteButton id={data.id} />
                         </>
 
                     )}
