@@ -50,6 +50,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthentication();
 
+app.UseAuthorization();
+
 app.MapControllers();
 
 await DB.InitAsync("BidDb",
